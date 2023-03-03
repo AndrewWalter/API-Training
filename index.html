@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polygon API</title>
+</head>
+
+<body>
+    <h1>Stock Information</h1>
+    <input type="text" id="ticker" value="">
+    <button id="info" value="Info" onclick="stockInfo()">Info</button>
+    <button id="finances" onclick="stockFinances()">Finances</button> <br>
+    <textarea id="output" placeholder="Output from API call"></textarea>
+</body>
+<script>
+    function stockInfo() {
+        let tickerInput = document.getElementById("ticker").value;
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", `http://localhost:3000/stock-info?ticker=${tickerInput}`, false);
+        xhttp.send();
+
+        const data = JSON.parse(xhttp.responseText);
+
+        console.log(data);
+        document.getElementById("output").value = xhttp.responseText;
+
+    };
+    function stockFinances() {
+        let tickerInput = document.getElementById("ticker").value;
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", `http://localhost:3000/stock-info?ticker=${tickerInput}`, false);
+        xhttp.send();
+
+        const data = JSON.parse(xhttp.responseText);
+
+        console.log(data);
+        document.getElementById("output").value = xhttp.responseText;
+
+        
+    };
+</script>
+
+</html>
